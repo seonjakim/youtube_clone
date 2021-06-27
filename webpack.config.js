@@ -26,6 +26,13 @@ module.exports = {
         use: [
           'file-loader'
         ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          'eslint-loader'
+        ]
       }
     ]
   },
@@ -39,5 +46,6 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  devtool: 'source-map'
 };
