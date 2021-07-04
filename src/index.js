@@ -1,9 +1,13 @@
-import sayHello from './js/sayHello'
-import './css/style.css'
+import videoScreen from "./js/videoScreen";
+import "./css/style.css";
+// import Dom from './lib/Dom';
+// import App from './lib/App'
 
-console.log(sayHello());
-
-let test = document.querySelector('body');
-let test2 = document.createElement('div');
-test2.innerText = 'hi';
-test.appendChild(test2);
+const Index = () => {
+  const $body = document.querySelector("body");
+  const $root = document.createElement('div');
+  $body.appendChild($root);
+  $root.classList.add('root');
+  $root.appendChild(videoScreen());
+};
+Index();
