@@ -1,45 +1,75 @@
-import "../css/style.css";
-import Dom from "../lib/Dom";
+//d="M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z"
 
-const videoScreen = () => {
-  let attr = {
-    src: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-    poster: "https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217",
-    width: "620"
+const videoScreen = {
+  render: async () => {
+    return `
+    <div class='videoContainer'>
+      <video id='videoBasic'
+        poster="https://upload.wikimedia.org/wikipedia/commons/e/e8/Elephants_Dream_s5_both.jpg" >
+        <source
+          src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4"
+          type="video/mp4">
+        <source
+          src="https://archive.org/download/ElephantsDream/ed_hd.ogv"
+          type="video/ogg">
+        <source
+          src="https://archive.org/download/ElephantsDream/ed_hd.avi"
+          type="video/avi">
+        Your browser doesn't support HTML5 video tag.
+      </video>
+      <div class='video-controls'>
+        <div class='progress-bar'></div>
+        <div class='control-buttons'>
+          <div class='left-buttons'>
+            <a class='prev-btn'></a>
+            <button id='ytb-play' class='play-btn svg-fill'>
+              <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+                <use xlink:href="#ytp-id-148"></use>
+                <path d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z" id="ytp-id-148"></path>
+              </svg>
+            </button>
+            <a class='next-btn svg-fill'>
+              <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><use class="ytp-svg-shadow" xlink:href="#ytp-id-12"></use><path class="ytp-svg-fill" d="M 12,24 20.5,18 12,12 V 24 z M 22,12 v 12 h 2 V 12 h -2 z" id="ytp-id-12"></path></svg>
+            </a>
+            <button id='ytb-volume' class='volume'>
+              <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><use class="ytp-svg-shadow" xlink:href="#ytp-id-14"></use><use class="ytp-svg-shadow" xlink:href="#ytp-id-15"></use><defs><clipPath id="ytp-svg-volume-animation-mask"><path d="m 14.35,-0.14 -5.86,5.86 20.73,20.78 5.86,-5.91 z"></path><path d="M 7.07,6.87 -1.11,15.33 19.61,36.11 27.80,27.60 z"></path><path class="ytp-svg-volume-animation-mover" d="M 9.09,5.20 6.47,7.88 26.82,28.77 29.66,25.99 z" transform="translate(0, 0)"></path></clipPath><clipPath id="ytp-svg-volume-animation-slash-mask"><path class="ytp-svg-volume-animation-mover" d="m -11.45,-15.55 -4.44,4.51 20.45,20.94 4.55,-4.66 z" transform="translate(0, 0)"></path></clipPath></defs><path class="ytp-svg-fill ytp-svg-volume-animation-speaker" clip-path="url(#ytp-svg-volume-animation-mask)" d="M8,21 L12,21 L17,26 L17,10 L12,15 L8,15 L8,21 Z M19,14 L19,22 C20.48,21.32 21.5,19.77 21.5,18 C21.5,16.26 20.48,14.74 19,14 Z" fill="#fff" id="ytp-id-14"></path><path class="ytp-svg-fill ytp-svg-volume-animation-hider" clip-path="url(#ytp-svg-volume-animation-slash-mask)" d="M 9.25,9 7.98,10.27 24.71,27 l 1.27,-1.27 Z" fill="#fff" id="ytp-id-15" style="display: none;"></path></svg>
+            </button>
+            <div class='volume-panel'></div>
+            <div class='time-display'>
+              <span>3:43</span>
+              <span>/</span>
+              <span>11:15</span>
+            </div>
+          </div>
+          <div class='right-buttons'>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  },
+  after_render: async () => {
+    const setVideoAs = document.getElementById('videoBasic');
+    // document
+    //   .getElementById('videoBasic')
+    //   .addEventListener('click', async (e) => {
+    //     console.log(e);
+    //   })
+    /** play and pause */
+    document
+      .getElementById('ytb-play')
+      .addEventListener('click', async (e) => {
+        console.log(setVideoAs)
+        console.log(e)
+        // setVideoAs.play();
+      })
+    /** volume */
+    document
+      .getElementById('ytb-volume')
+      .addEventListener('click', async () => {
+
+      })
   }
-  const $main = new Dom("div", "videoContainer");
-  const $video = new Dom('video', 'videoBase',attr);
-  const btn = new Dom('button', 'play');
-  const test5 = document.createElement('button');
-  const videoAction = (e) => {
-    console.log(e)
-  }
-  test5.addEventListener('click', videoAction);
-  const windowCall = document.querySelector('body');
-  windowCall.appendChild(test5)
-  btn.el.innerText = 'hello'
-  $main.el.appendChild($video.el);
-  $main.el.appendChild(btn.el);
-  btn.el.addEventListener('click', () => {
-    btn.el.innerText = 'bye'
-  })
-//   $main.el.innerHTML = `
-//   <video class='videoBase'
-//   src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
-//   poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
-//   width="620">
-
-//   Sorry, your browser doesn't support embedded videos,
-//   but don't worry, you can <a href="https://archive.org/details/BigBuckBunny_124">download it</a>
-//   and watch it with your favorite video player!
-
-//   </video>
-//   <button class='play'>play</button>
-// `;
-  const test = $main.el.querySelector('.videoBase');
-  const play = $main.el.querySelector('.play');
-  console.log(play);
-  return $main.el.innerHTML;
 };
 
 export default videoScreen;

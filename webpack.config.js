@@ -28,6 +28,18 @@ module.exports = {
       //   exclude: /node_modules/,
       //   use: ["eslint-loader"],
       // },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      },
+      {
+        test: /\.html$/i,
+        loader: 'file-loader'
+      }
     ],
   },
   devServer: {
