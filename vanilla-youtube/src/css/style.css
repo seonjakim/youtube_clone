@@ -26,13 +26,19 @@ ol, ul {
 :root {
   --background-color: red;
   --button-font-size: 13px;
+  --video-width: 80vw;
   --aspect-ratio: 9/16;
 }
 
 /** styles */
+.modal-position {
+  position: fixed;
+  /* right: 30px;
+  bottom: 116px; */
+}
 .videoContainer {
-  width: 50vw;
-  height: calc(50vw * var(--aspect-ratio));
+  width: var(--video-width);
+  height: calc(var(--video-width) * var(--aspect-ratio));
   position: relative;
 }
 
@@ -117,15 +123,17 @@ ol, ul {
   border: 1px solid blue;
 }
 
-.navWrap {
+.nav-wrap {
   grid-area: nav;
   background-color: khaki;
 }
-.mainWrap {
+.main-wrap {
   grid-area: section;
   background-color: lightcoral;
+  padding-right: 24px 24px 0 0;
+  margin-left: 24px;
 }
-.asideWrap {
+.aside-wrap {
   grid-area: aside;
   background-color: lightcyan;
 }

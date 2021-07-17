@@ -1,0 +1,60 @@
+/** reset CSS */
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span, video, img, nav,
+header, footer, section, ol, ul, li, button, span {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  font: inherit;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+button {
+  background-color: transparent;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/** tokens */
+:root {
+
+}
+
+/** video style */
+
+/** video view style */
+.video-view-container {
+  width: 100vw;
+  display: grid;
+  grid-template-areas: 'header header'
+                        'video suggest';
+  grid-template-rows: 7vh auto;
+  grid-template-columns: auto minmax(300px, 402px);
+}
+.header {
+  grid-area: header;
+  background-color: lavender;
+  padding: 0 16px;
+}
+.video-section {
+  grid-area: video;
+  background-color: lemonchiffon;
+  margin-left: 24px;
+  padding: 24px 24px 0 0;
+}
+.video-suggestion {
+  grid-area: suggest;
+  background-color: lightcyan;
+  padding: 24px 24px 0 0;
+}
+
+#videoBasic {
+  width: 100%;
+}
