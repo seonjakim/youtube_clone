@@ -3,8 +3,6 @@ import VideoFrame from './view/VideoFrame'
 import Video from './components/Video'
 
 const App = () => {
-  return (
-    <VideoFrame videoSection={<Video />}></VideoFrame>
-  )
+  return <VideoFrame videoSection={<Video />}></VideoFrame>
 }
 export default App

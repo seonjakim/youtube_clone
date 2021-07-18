@@ -4,7 +4,7 @@ const videoScreen = {
   render: async () => `
     <div id='video-area'>
       <div class='videoContainer'>
-        <video id='videoBasic'
+        <video id='video-tag'
           poster="https://upload.wikimedia.org/wikipedia/commons/e/e8/Elephants_Dream_s5_both.jpg" >
           <source
             src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4"
@@ -37,11 +37,6 @@ const videoScreen = {
         </div>
       </div>
     </div>
-    <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
     `,
   after_render: async () => {
     /** align icons */
@@ -50,6 +45,7 @@ const videoScreen = {
     const playButton = document.getElementById('ytb-play');
     const nextButton = document.getElementById('ytb-next-video');
     const volumeButton = document.getElementById('ytb-volume');
+    let isModal = false;
     playButton.innerHTML = play;
     nextButton.innerHTML = next;
     volumeButton.innerHTML = volume;
@@ -64,25 +60,30 @@ const videoScreen = {
     let active = false;
 
     const screenControl = document.querySelector('.videoContainer');
-    const setVideoAs = document.getElementById('videoBasic');
+    const setVideoAs = document.getElementById('video-tag');
     const videoCurrentTime = document.getElementById('ytb-current-time');
     const playNpauseSVG = document.getElementById('ytp-id-148');
     const progress = document.querySelector('.watched');
     const fullScreen = document.getElementById('right-ctr-4');
     const videoModal = document.getElementById('video-area');
     const body = document.querySelector('.root')
-console.log(body);
-body.addEventListener('scroll', (e) => {
-  console.log(e)
-  console.log(e.target.scrollTop);
-  // console.log(e.target.querySelector('#video-area').clientHeight);
-  // if (e.target.querySelector('.root').scrollTop > e.target.querySelector('#video-area').clientHeight) {
-  //   videoModal.classList.add('modal-position')
-  // } else {
-  //   videoModal.classList.remove('modal-position');
-  //   // videoModal.style.transform = 'translate3d(0px, 0px, 0)';
-  // }
-})
+
+    // setVideoAs.addEventListener('scroll', (e) => {
+    //   console.log(e)
+    // })
+    let videoBottom = setVideoAs.getBoundingClientRect().bottom
+    body.addEventListener('scroll', (e) => {
+      // if (!isModal && e.target.scrollTop > videoBottom) {
+      //   console.log("hello")
+      //   document.documentElement.style.setProperty('--video-width', '450px')
+      //   videoModal.className = 'modal-position'
+      //   isModal = true
+      // } else if (isModal && e.target.scrollTop < videoBottom) {
+      //   document.documentElement.style.setProperty('--video-width', '1500px')
+      //   videoModal.classList.remove = 'modal-position'
+      //   isModal = false
+      // }
+    })
     /** drag and drop the video modal */
     const dragStart = (e) => {
       initialX = e.clientX - xOffset;

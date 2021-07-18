@@ -2,7 +2,7 @@ const FrameVideo = {
   render: async () => `
     <div class='root'>
       <nav class='nav-wrap'></nav>
-      <div class='main-wrap'></div>
+      <section class='main-wrap'></section>
       <aside class='aside-wrap'></aside>
     </div>
   `,

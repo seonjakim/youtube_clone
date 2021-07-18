@@ -1,6 +1,6 @@
 import React from 'react'
 
-const VideoFrame = ({nav, videoSection, suggestion}) => {
+const VideoFrame = ({ nav, videoSection, suggestion }) => {
   return (
     <div className='video-view-container'>
       <header className='header'>{nav}</header>
