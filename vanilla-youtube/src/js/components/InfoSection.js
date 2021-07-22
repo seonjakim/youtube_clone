@@ -1,10 +1,8 @@
 const InfoSection = {
-  render: async() => `
+  render: async () => `
     <div></div>
     <div></div>
   `,
-  after_render: async() => {
-
-  }
+  after_render: async () => {},
 }
 export default InfoSection

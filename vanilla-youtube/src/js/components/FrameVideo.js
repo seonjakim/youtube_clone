@@ -6,9 +6,7 @@ const FrameVideo = {
       <aside class='aside-wrap'></aside>
     </div>
   `,
-  after_render: async () => {
-
-  }
+  after_render: async () => {},
 }
 
-export default FrameVideo;
+export default FrameVideo

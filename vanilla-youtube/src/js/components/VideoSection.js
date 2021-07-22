@@ -1,8 +1,8 @@
 import videoScreen from '../videoScreen'
-import {icons} from '../data/utils'
+import { icons } from '../data/utils'
 
 const videoSection = {
-  render: async() => `
+  render: async () => `
     <div class='video-space'></div>
     <div class='introduction-space'>
       <div id='info-contents'>
@@ -21,39 +21,29 @@ const videoSection = {
       </div>
     </div>
     <div class='comment-space'><div>
-  `
-  ,after_render: async() => {
+  `,
+  after_render: async () => {
     const videoSpace = document.querySelector('.video-space')
     const infoSpace = document.querySelector('.info-contents-btn')
     videoSpace.innerHTML = await videoScreen.render()
     await videoScreen.after_render()
 
-    let thumbup, thumbdown, share, save, more;
-    ({thumbup, thumbdown, share, save, more} = icons)
+    let thumbup, thumbdown, share, save, more
+    ;({ thumbup, thumbdown, share, save, more } = icons)
 
-    const iconArr = [thumbup, thumbdown, share, save, more];
+    const iconArr = [thumbup, thumbdown, share, save, more]
 
-    const infoIcons = iconArr.map(el => 
-      `
+    const infoIcons = iconArr
+      .map(
+        (el) => `
         <button style='width:24px;'>${el}</button>
         <div style='width:24px;height:24px;background-color:blue;'></div>
-      `  
-    ).join('')
-    console.log(infoIcons)
-    console.log(infoSpace)
+      `
+      )
+      .join('')
 
     infoSpace.innerHTML = infoIcons
-
-
-    const putRandom = document.querySelector('.comment-space')
-    // putRandom.innerHTML = `
-    // <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    // <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    // <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    // <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    // <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg' />  
-    // `
-  }
+  },
 }
 
 export default videoSection
